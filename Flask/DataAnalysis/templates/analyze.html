@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cuprum&display=swap">
+    <style>
+        body {
+           background-color: white;
+            color: #2c2c2c;
+            font-family: 'Cuprum', sans-serif;
+        }
+        plot {
+            background-color: #0a0371;
+            color: black;
+        }
+        .plotly-graph-div {
+            background-color: #151159;
+            color: darkslategray;
+        }
+        .plotly- {
+            background-color: #0a0371 !important;
+        }
+        table{
+            width: 70%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #8480f0;
+            color: black;
+        }
+        tr:nth-child(even) {
+            background-color: #e7e7f6;
+        }
+        tr:hover {
+            background-color: #9d9dcc;
+        }
+        .plot-container {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #8480f0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #151159; font-size: 30px; text-align: center; text-decoration: underline;">Data Analysis</h1>
+
+    <!-- Title  -->
+    <div style="text-align: center;">
+        <h1 style="color: #8480f0; text-align: center;">Shape:</h1>
+        <p>{{ data.shape }}</p>
+
+        <!-- Numerical -->
+        <h1 style="color: #8480f0; text-align: center;">Numerical Columns:</h1>
+        {% if num_columns %}
+            <table style="margin: 0 auto;">
+                <tr>
+                    {% for col in num_columns[:num_columns|length//2] %}
+                        <td>{{ col }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for col in num_columns[num_columns|length//2:] %}
+                        <td>{{ col }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        {% else %}
+            <p>No numerical columns available.</p>
+        {% endif %}
+
+        <!-- Categorical Columns -->
+        <h1 style="color: #8480f0; text-align: center;">Categorical Columns:</h1>
+        {% if cat_columns %}
+            <table style="margin: 0 auto;">
+                <tr>
+                    {% for col in cat_columns[:cat_columns|length//2] %}
+                        <td>{{ col }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for col in cat_columns[cat_columns|length//2:] %}
+                        <td>{{ col }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        {% else %}
+            <p>No categorical columns available.</p>
+        {% endif %}
+    </div>
+
+    <!-- Button -->
+    <div class="button-container">
+        <button class="button" onclick="showGeneral()">General</button>
+        <button class="button" onclick="showBoxPlot()">Box Plot</button>
+        <button class="button" onclick="showHistograms()">Histograms</button>
+        <button class="button" onclick="showViolinPlots()">Violin Plots</button>
+        <button class="button" onclick="showCategoricalPlots()">Categorical Plots</button>
+    </div>
+
+    <!-- General -->
+    <div id="general-section" style="display: none;">
+        <h1 style="color: #8480f0; text-align: center;">Head:</h1>
+        <table border="1" style="margin: 0 auto;">
+            <thead>
+                <tr>
+                    {% for col in data.columns %}
+                        <th>{{ col }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in data.head().iterrows() %}
+                    <tr>
+                        {% for col in data.columns %}
+                            <td>{{ row[col] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h1 style="color: #8480f0; text-align: center;">Summary:</h1>
+        <div style="margin: 0 auto; width: fit-content;">
+            {{ tables[0]|safe }}
+        </div>
+        <div style="text-align: center;">
+            <div class="table-container">
+                <h1 style="color: #8480f0; text-align: center;">Types:</h1>
+                <table border="1" style="margin: 0 auto;">
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Data Types</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for col, dtype in data.dtypes.items() %}
+                            <tr>
+                                <td>{{ col }}</td>
+                                <td>{{ dtype }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-container">
+                <h1 style="color: #8480f0; text-align: center;">Missing Values:</h1>
+                <table border="1" style="margin: 0 auto;">
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Missing Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for col in data.columns %}
+                            <tr>
+                                <td>{{ col }}</td>
+                                <td>{{ data[col].isnull().sum() }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Box Plot -->
+    <div id="box-plot-section" style="display: none; text-align: center;">
+        <div class="plot-container" style="display: inline-block; margin: 0 auto;">
+            <h1 style="color: #8480f0; text-align: center;">Box Plot:</h1>
+            <div class="plot">{{ plot_div_box_plot|safe }}</div>
+        </div>
+    </div>
+
+    <!-- Histograms -->
+    <div id="histograms-section" style="display: none;">
+        <h1 style="color: #8480f0; text-align: center;">Histograms:</h1>
+        {% for plot_div in plot_div_histograms %}
+            <div class="plot-container">
+                <div class="plot">{{ plot_div|safe }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Violin Plots -->
+    <div id="violin-plots-section" style="display: none;">
+        <h1 style="color: #8480f0; text-align: center;">Violin Plots:</h1>
+        <div style="text-align: center;">
+            {% for plot_div in plot_div_violin_plots %}
+                <div class="plot-container">
+                    <div class="plot">{{ plot_div|safe }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Categorical Plots -->
+    <div id="categorical-plots-section" style="display: none;">
+        <h1 style="color: #8480f0; text-align: center;">Categorical Plots:</h1>
+        <div style="text-align: center;">
+            {% for col, plot_data in cat_plots.items() %}
+                <div class="plot-container">
+                    <div class="plot" id="{{ col }}-chart"></div>
+                </div>
+                <script>
+                    Plotly.newPlot('{{ col }}-chart', {{ plot_data.data|safe }}, {{ plot_data.layout|safe }});
+                </script>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        function showGeneral() {
+            document.getElementById("general-section").style.display = "block";
+            document.getElementById("box-plot-section").style.display = "none";
+            document.getElementById("histograms-section").style.display = "none";
+            document.getElementById("violin-plots-section").style.display = "none";
+            document.getElementById("categorical-plots-section").style.display = "none";
+        }
+
+        function showBoxPlot() {
+            document.getElementById("general-section").style.display = "none";
+            document.getElementById("box-plot-section").style.display = "block";
+            document.getElementById("histograms-section").style.display = "none";
+            document.getElementById("violin-plots-section").style.display = "none";
+            document.getElementById("categorical-plots-section").style.display = "none";
+        }
+
+        function showHistograms() {
+            document.getElementById("general-section").style.display = "none";
+            document.getElementById("box-plot-section").style.display = "none";
+            document.getElementById("histograms-section").style.display = "block";
+            document.getElementById("violin-plots-section").style.display = "none";
+            document.getElementById("categorical-plots-section").style.display = "none";
+        }
+
+        function showViolinPlots() {
+            document.getElementById("general-section").style.display = "none";
+            document.getElementById("box-plot-section").style.display = "none";
+            document.getElementById("histograms-section").style.display = "none";
+            document.getElementById("violin-plots-section").style.display = "block";
+            document.getElementById("categorical-plots-section").style.display = "none";
+        }
+
+        function showCategoricalPlots() {
+            document.getElementById("general-section").style.display = "none";
+            document.getElementById("box-plot-section").style.display = "none";
+            document.getElementById("histograms-section").style.display = "none";
+            document.getElementById("violin-plots-section").style.display = "none";
+            document.getElementById("categorical-plots-section").style.display = "block";
+        }
+    </script>
+</body>
+</html>
