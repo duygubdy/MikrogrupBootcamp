@@ -13,52 +13,171 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
+            <div id="card-container"></div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                    data-whatever="@mdo">Yeni Kullanıcı Ekle
+            </button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Yeni Kullanıcı Ekle</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addUserForm">
+                                <div class="form-group">
+                                    <label for="name">Ad:</label>
+                                    <input class="form-control" id="name" placeholder="Enter Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="surname">Soyad:</label>
+                                    <input class="form-control" id="surname" placeholder="Enter Surname" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="age">Yaş:</label>
+                                    <input class="form-control" id="age" placeholder="Enter Age" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="department">Departmanı:</label>
+                                    <select class="form-control" id="department" required>
+                                        <option value="Sales">Satış</option>
+                                        <option value="Research & Development">Araştırma Geliştirme</option>
+                                        <option value="Human Resources">İnsan Kaynakları</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="distanceFromHome">Evden Uzaklığı:</label>
+                                    <input type="number" class="form-control" id="distanceFromHome"
+                                           placeholder="Km cinsinden yazın" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="education">Eğitim Seviyesi:</label>
+                                    <select class="form-control" id="education" required>
+                                        <option value="1">Lise</option>
+                                        <option value="2">Önlisans</option>
+                                        <option value="3">Lisans</option>
+                                        <option value="4">Yüksek Lisans</option>
+                                        <option value="5">Doktora</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="educationField">Eğitim Alanı:</label>
+                                    <select class="form-control" id="educationField" required>
+                                        <option value="Life Sciences">Yaşam Bilimleri</option>
+                                        <option value="Medical">Tıp</option>
+                                        <option value="Marketing">Pazarlama</option>
+                                        <option value="Technical Degree">Teknik Derece</option>
+                                        <option value="Human Resources">İnsan Kaynakları</option>
+                                        <option value="Other">Diğer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Cinsiyeti:</label>
+                                    <select class="form-control" id="gender" required>
+                                        <option value="Female">Kadın</option>
+                                        <option value="Male">Erkek</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jobLevel">Kıdem Seviyesi:</label>
+                                    <select class="form-control" id="jobLevel" required>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="JobRole">İş Rolü:</label>
+                                    <select class="form-control" id="jobRole" required>
+                                        <option value="Sales Executive">Sales Executive</option>
+                                        <option value="Research Scientist">Research Scientist</option>
+                                        <option value="Laboratory Technician">Laboratory Technician</option>
+                                        <option value="Manufacturing Director">Manufacturing Director</option>
+                                        <option value="Healthcare Representative">Healthcare Representative</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="Sales Representative">Sales Representative</option>
+                                        <option value="Research Director">Research Director</option>
+                                        <option value="Human Resources">Human Resources</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maritalStatus">Medeni Hali:</label>
+                                    <select class="form-control" id="maritalStatus" required>
+                                        <option value="Divorced">Boşanmış</option>
+                                        <option value="Married">Evli</option>
+                                        <option value="Single">Bekar</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="monthlyIncome">Aylık Geliri:</label>
+                                    <input type="number" class="form-control" id="monthlyIncome"
+                                           placeholder="Enter Monthly Income" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="stockOptionLevel">Hisse Senedi Durumu:</label>
+                                    <select class="form-control" id="stockOptionLevel" required>
+                                        <option value="0">Yok</option>
+                                        <option value="1">Düşük Yüzdeli Var</option>
+                                        <option value="2">Orta Yüzdeli Var</option>
+                                        <option value="3">Yüksek Yüzdeli Var</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="totalWorkingYears">Toplam Meslek Hayatı Kaç Yıl:</label>
+                                    <input type="number" class="form-control" id="totalWorkingYears"
+                                           placeholder="Enter Total Working Years" required>
+                                </div>
+                                <div class="form-group">Geçen Yıl Aldığı Eğitim Sayısı:</label>
+                                    <input type="number" class="form-control" id="trainingTimesLastYear"
+                                           placeholder="Enter Training Times Last Year" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="yearsAtCompany">Şirkette Kaç Senedir Çalışıyor:</label>
+                                    <input type="number" class="form-control" id="yearsAtCompany"
+                                           placeholder="Enter Years At Company" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="yearsInCurrentRole">Mevcut Roldeki İş Yılı:</label>
+                                    <input type="number" class="form-control" id="yearsInCurrentRole"
+                                           placeholder="Enter Years In Current Role" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="yearsSinceLastPromotion">Son Terfiden Bu Yana Geçen Yıl:</label>
+                                    <input type="number" class="form-control" id="yearsSinceLastPromotion"
+                                           placeholder="Enter Years Since Last Promotion" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="yearsWithCurrManager">Mevcut Yönetici İle Geçen Yıl:</label>
+                                    <input type="number" class="form-control" id="yearsWithCurrManager"
+                                           placeholder="Enter Years With Current Manager" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            <button type="button" class="btn btn-primary" onclick="addUser()">Kullanıcı Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
             <h2>Attrition & Performance Rating Predictor</h2>
             <form id="predictionForm">
-                <div class="form-group">
-                    <label for="age">Yaş:</label>
-                    <input type="number" class="form-control" id="age" placeholder="Enter Age" required>
-                </div>
                 <div class="form-group">
                     <label for="businessTravel">İş Seyahati Sıklığı:</label>
                     <select class="form-control" id="businessTravel" required>
                         <option value="Travel_Frequently">Sık Sık</option>
                         <option value="Travel_Rarely">Seyrek</option>
                         <option value="Non-Travel">Yok</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="department">Departmanı:</label>
-                    <select class="form-control" id="department" required>
-                        <option value="Sales">Satış</option>
-                        <option value="Research & Development">Araştırma Geliştirme</option>
-                        <option value="Human Resources">İnsan Kaynakları</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="distanceFromHome">Evden Uzaklığı:</label>
-                    <input type="number" class="form-control" id="distanceFromHome" placeholder="Km cinsinden yazın" required>
-                </div>
-                <div class="form-group">
-                    <label for="education">Eğitim Seviyesi:</label>
-                    <select class="form-control" id="education" required>
-                        <option value="1">Lise</option>
-                        <option value="2">Önlisans</option>
-                        <option value="3">Lisans</option>
-                        <option value="4">Yüksek Lisans</option>
-                        <option value="5">Doktora</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                   <label for="educationField">Eğitim Alanı:</label>
-                    <select class="form-control" id="educationField" required>
-                        <option value="Life Sciences">Yaşam Bilimleri</option>
-                        <option value="Medical">Tıp</option>
-                        <option value="Marketing">Pazarlama</option>
-                        <option value="Technical Degree">Teknik Derece</option>
-                        <option value="Human Resources">İnsan Kaynakları</option>
-                        <option value="Other">Diğer</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -70,13 +189,7 @@
                         <option value="4">Çok Yüksek</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="gender">Cinsiyeti:</label>
-                    <select class="form-control" id="gender" required>
-                        <option value="Female">Kadın</option>
-                        <option value="Male">Erkek</option>
-                    </select>
-                </div>
+
                 <div class="form-group">
                     <label for="jobInvolvement">İşe Katılımı:</label>
                     <select class="form-control" id="jobInvolvement" required>
@@ -87,30 +200,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                  <label for="jobLevel">Kıdem Seviyesi:</label>
-                    <select class="form-control" id="jobLevel" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="JobRole">İş Rolü:</label>
-                    <select class="form-control" id="jobRole" required>
-                        <option value="Sales Executive">Sales Executive</option>
-                        <option value="Research Scientist">Research Scientist</option>
-                        <option value="Laboratory Technician">Laboratory Technician</option>
-                        <option value="Manufacturing Director">Manufacturing Director</option>
-                        <option value="Healthcare Representative">Healthcare Representative</option>
-                        <option value="Manager">Manager</option>
-                        <option value="Sales Representative">Sales Representative</option>
-                        <option value="Research Director">Research Director</option>
-                        <option value="Human Resources">Human Resources</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="jobSatisfaction">İş Memnuniyeti:</label>
                     <select class="form-control" id="jobSatisfaction" required>
                         <option value="1">Düşük</option>
@@ -118,18 +207,6 @@
                         <option value="3">Yüksek</option>
                         <option value="4">Çok Yüksek</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="maritalStatus">Medeni Hali:</label>
-                    <select class="form-control" id="maritalStatus" required>
-                        <option value="Divorced">Boşanmış</option>
-                        <option value="Married">Evli</option>
-                        <option value="Single">Bekar</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="monthlyIncome">Aylık Geliri:</label>
-                    <input type="number" class="form-control" id="monthlyIncome" placeholder="Enter Monthly Income" required>
                 </div>
                 <div class="form-group">
                     <label for="overTime">Mesai Durumu:</label>
@@ -147,22 +224,7 @@
                         <option value="4">Çok Yüksek</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="stockOptionLevel">Hisse Senedi Durumu:</label>
-                    <select class="form-control" id="stockOptionLevel" required>
-                        <option value="0">Yok</option>
-                        <option value="1">Düşük Yüzdeli Var</option>
-                        <option value="2">Orta Yüzdeli Var</option>
-                        <option value="3">Yüksek Yüzdeli Var</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="totalWorkingYears">Toplam Meslek Hayatı Kaç Yıl:</label>
-                    <input type="number" class="form-control" id="totalWorkingYears" placeholder="Enter Total Working Years" required>
-                </div>
-                <div class="form-group">Geçen Yıl Aldığı Eğitim Sayısı:</label>
-                    <input type="number" class="form-control" id="trainingTimesLastYear" placeholder="Enter Training Times Last Year" required>
-                </div>
+
                 <div class="form-group">
                     <label for="workLifeBalance">İş-Sosyal Hayat Dengesi:</label>
                     <select class="form-control" id="workLifeBalance" required>
@@ -172,27 +234,10 @@
                         <option value="4">Çok İyi</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="yearsAtCompany">Şirkette Kaç Senedir Çalışıyor:</label>
-                    <input type="number" class="form-control" id="yearsAtCompany" placeholder="Enter Years At Company" required>
-                </div>
-                <div class="form-group">
-                    <label for="yearsInCurrentRole">Mevcut Roldeki İş Yılı:</label>
-                    <input type="number" class="form-control" id="yearsInCurrentRole" placeholder="Enter Years In Current Role" required>
-                </div>
-                <div class="form-group">
-                    <label for="yearsSinceLastPromotion">Son Terfiden Bu Yana Geçen Yıl:</label>
-                    <input type="number" class="form-control" id="yearsSinceLastPromotion" placeholder="Enter Years Since Last Promotion" required>
-                </div>
-                <div class="form-group">
-                    <label for="yearsWithCurrManager">Mevcut Yönetici İle Geçen Yıl:</label>
-                    <input type="number" class="form-control" id="yearsWithCurrManager" placeholder="Enter Years With Current Manager" required>
-                </div>
-
-                <button type="button" class="btn btn-primary" onclick="predict()">Sonuç</button>
+                <button type="button" id="addUserButton" class="btn btn-primary" onclick="predict()">Sonuç</button>
             </form>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h2>Tahmin Sonuçları</h2>
             <div id="predictionResult"></div>
         </div>
@@ -201,31 +246,30 @@
 
 <script>
     function predict() {
-        var age =parseInt($('#age').val());
+        var age = JSON.parse(localStorage.getItem('selectedUser')).age;
         var businessTravel = $('#businessTravel').val();
-        var department = $('#department').val();
-        var distanceFromHome =parseInt($('#distanceFromHome').val());
-        var education = parseInt($('#education').val());
-        var educationField = $('#educationField').val();
+        var department = JSON.parse(localStorage.getItem('selectedUser')).department;
+        var distanceFromHome = JSON.parse(localStorage.getItem('selectedUser')).distanceFromHome;
+        var education = JSON.parse(localStorage.getItem('selectedUser')).education;
+        var educationField = JSON.parse(localStorage.getItem('selectedUser')).educationField;
         var environmentSatisfaction = parseInt($('#environmentSatisfaction').val());
-        var gender = $('#gender').val();
+        var gender = JSON.parse(localStorage.getItem('selectedUser')).gender;
         var jobInvolvement = parseInt($('#jobInvolvement').val());
-        var jobLevel = parseInt($('#jobLevel').val());
-        var jobRole = $('#jobRole').val();
+        var jobLevel = JSON.parse(localStorage.getItem('selectedUser')).jobLevel;
+        var jobRole = JSON.parse(localStorage.getItem('selectedUser')).jobRole;
         var jobSatisfaction = parseInt($('#jobSatisfaction').val());
-        var maritalStatus = $('#maritalStatus').val();
-        var monthlyIncome = parseInt($('#monthlyIncome').val());
+        var maritalStatus = JSON.parse(localStorage.getItem('selectedUser')).maritalStatus;
+        var monthlyIncome = JSON.parse(localStorage.getItem('selectedUser')).monthlyIncome;
         var overTime = $('#overTime').val();
         var relationshipSatisfaction = parseInt($('#relationshipSatisfaction').val());
-        var stockOptionLevel = parseInt($('#stockOptionLevel').val());
-        var totalWorkingYears = parseInt($('#totalWorkingYears').val());
-        var trainingTimesLastYear = parseInt($('#trainingTimesLastYear').val());
+        var stockOptionLevel = JSON.parse(localStorage.getItem('selectedUser')).stockOptionLevel;
+        var totalWorkingYears = JSON.parse(localStorage.getItem('selectedUser')).totalWorkingYears;
+        var trainingTimesLastYear = JSON.parse(localStorage.getItem('selectedUser')).trainingTimesLastYear;
         var workLifeBalance = parseInt($('#workLifeBalance').val());
-        var yearsAtCompany = parseInt($('#yearsAtCompany').val());
-        var yearsInCurrentRole = parseInt($('#yearsInCurrentRole').val());
-        var yearsSinceLastPromotion = parseInt($('#yearsSinceLastPromotion').val());
-        var yearsWithCurrManager = parseInt($('#yearsWithCurrManager').val());
-
+        var yearsAtCompany = JSON.parse(localStorage.getItem('selectedUser')).yearsAtCompany;
+        var yearsInCurrentRole = JSON.parse(localStorage.getItem('selectedUser')).yearsInCurrentRole;
+        var yearsSinceLastPromotion = JSON.parse(localStorage.getItem('selectedUser')).yearsSinceLastPromotion;
+        var yearsWithCurrManager = JSON.parse(localStorage.getItem('selectedUser')).yearsWithCurrManager;
 
         $.ajax({
             url: "/predict",
@@ -257,16 +301,110 @@
                 'YearsSinceLastPromotion': yearsSinceLastPromotion,
                 'YearsWithCurrManager': yearsWithCurrManager
             }),
-            success: function(response) {
+            success: function (response) {
                 $('#predictionResult').html('<p><strong>Çalışanın Yıpranma Tahmini:</strong> ' + response.attrition_prediction + '</p>' +
-                                           '<p><strong>Çalışanın Performans Skoru(0-5):</strong> ' + response.performance_prediction + '</p>');
+                    '<p><strong>Çalışanın Performans Skoru(0-5):</strong> ' + response.performance_prediction + '</p>');
+
+                const selectedUser = JSON.parse(localStorage.getItem('selectedUser')) || {}
+                selectedUser.response = response;
+                localStorage.setItem('selectedUser', JSON.stringify(selectedUser))
+                const users = JSON.parse(localStorage.getItem('users'));
+                users.forEach(user => {
+                    if (user.id === selectedUser.id) {
+                        user.response = selectedUser.response
+                    }
+                })
+                localStorage.setItem('users', JSON.stringify(users))
+                loadUsers();
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 alert("Error occurred while predicting: " + error);
             }
         });
     }
+
+    let count = 0;
+    document.addEventListener('DOMContentLoaded', function () {
+        loadUsers()
+    });
+
+    function loadUsers() {
+        const cardContainer = document.getElementById('card-container');
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        cardContainer.innerHTML = '';
+        let selectedUserId = 0;
+        users.forEach(user => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.id = user.id
+            const cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+            cardBody.innerHTML = `
+                <p>${user.name} ${user.surname}</p>
+                <p></p>
+            `;
+            console.log(user.response)
+            if (user.response !== undefined && user.response != null) {
+                cardBody.innerHTML += `
+                <p><strong>Çalışanın Yıpranma Tahmini:<strong> ${user.response.attrition_prediction}</p>
+                <p> <strong>Çalışanın Performans Skoru(0-5):<strong> ${user.response.performance_prediction}</p>
+            `;
+            }
+            card.appendChild(cardBody);
+            cardContainer.appendChild(card);
+
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.card.selected').forEach(selectedCard => {
+                    selectedCard.classList.remove('selected');
+                });
+                card.classList.add('selected');
+                selectedUserId = card.id;
+                const selectedUser = users.find(user => user.id == selectedUserId)
+                localStorage.setItem('selectedUser', JSON.stringify(selectedUser))
+            });
+        });
+
+    }
+
+    const addUser = () => {
+        count++
+        const user = {
+            id: count,
+            name: $('#name').val(),
+            surname: $('#surname').val(),
+            age: parseInt($('#age').val()),
+            businessTravel: $('#businessTravel').val(),
+            department: $('#department').val(),
+            distanceFromHome: parseInt($('#distanceFromHome').val()),
+            education: parseInt($('#education').val()),
+            educationField: $('#educationField').val(),
+            gender: $('#gender').val(),
+            jobLevel: parseInt($('#jobLevel').val()),
+            jobRole: $('#jobRole').val(),
+            maritalStatus: $('#maritalStatus').val(),
+            monthlyIncome: parseInt($('#monthlyIncome').val()),
+            stockOptionLevel: parseInt($('#stockOptionLevel').val()),
+            totalWorkingYears: parseInt($('#totalWorkingYears').val()),
+            trainingTimesLastYear: parseInt($('#trainingTimesLastYear').val()),
+            yearsAtCompany: parseInt($('#yearsAtCompany').val()),
+            yearsInCurrentRole: parseInt($('#yearsInCurrentRole').val()),
+            yearsSinceLastPromotion: parseInt($('#yearsSinceLastPromotion').val()),
+            yearsWithCurrManager: parseInt($('#yearsWithCurrManager').val())
+        }
+        const users = JSON.parse(localStorage.getItem('users')) || []
+        users.push(user)
+        localStorage.setItem('users', JSON.stringify(users))
+        loadUsers();
+        count++;
+    }
 </script>
+
+<style>
+    .card.selected {
+        background-color: #d3e5ff;
+        border: 2px solid #3a8dff;
+    }
+</style>
 
 </body>
 </html>
