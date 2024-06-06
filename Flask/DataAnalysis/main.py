@@ -7,10 +7,11 @@ from model import AttritionPerformancePredictor
 
 app = Flask(__name__)
 
-predictor = AttritionPerformancePredictor('logistic_model_attrition.pkl', 'logistic_model_performance.pkl',
-                                          'label_encoders_attrition.pkl')
+
 @app.route('/predict', methods=['POST'])
 def predict():
+    predictor = AttritionPerformancePredictor('logistic_model_attrition.pkl', 'logistic_model_performance.pkl',
+                                              'label_encoders_attrition.pkl')
     data = request.json
     attrition_prediction, performance_prediction = predictor.predict(data)
     return jsonify({'attrition_prediction': attrition_prediction.tolist(), 'performance_prediction': performance_prediction.tolist()})

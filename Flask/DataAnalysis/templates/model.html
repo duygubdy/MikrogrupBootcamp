@@ -17,162 +17,183 @@
             <h2>Attrition & Performance Rating Predictor</h2>
             <form id="predictionForm">
                 <div class="form-group">
-                    <label for="age">Age:</label>
+                    <label for="age">Yaş:</label>
                     <input type="number" class="form-control" id="age" placeholder="Enter Age" required>
                 </div>
                 <div class="form-group">
-                    <label for="businessTravel">Business Travel:</label>
+                    <label for="businessTravel">İş Seyahati Sıklığı:</label>
                     <select class="form-control" id="businessTravel" required>
-                        <option value="Travel_Rarely">Travel_Rarely</option>
-                        <option value="Travel_Frequently">Travel_Frequently</option>
-                        <option value="Non-Travel">Non-Travel</option>
+                        <option value="Travel_Frequently">Sık Sık</option>
+                        <option value="Travel_Rarely">Seyrek</option>
+                        <option value="Non-Travel">Yok</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="department">Department:</label>
+                    <label for="department">Departmanı:</label>
                     <select class="form-control" id="department" required>
-                        <option value="Sales">Sales</option>
-                        <option value="Research & Development">Research & Development</option>
+                        <option value="Sales">Satış</option>
+                        <option value="Research & Development">Araştırma Geliştirme</option>
+                        <option value="Human Resources">İnsan Kaynakları</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="distanceFromHome">Evden Uzaklığı:</label>
+                    <input type="number" class="form-control" id="distanceFromHome" placeholder="Km cinsinden yazın" required>
+                </div>
+                <div class="form-group">
+                    <label for="education">Eğitim Seviyesi:</label>
+                    <select class="form-control" id="education" required>
+                        <option value="1">Lise</option>
+                        <option value="2">Önlisans</option>
+                        <option value="3">Lisans</option>
+                        <option value="4">Yüksek Lisans</option>
+                        <option value="5">Doktora</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                   <label for="educationField">Eğitim Alanı:</label>
+                    <select class="form-control" id="educationField" required>
+                        <option value="Life Sciences">Yaşam Bilimleri</option>
+                        <option value="Medical">Tıp</option>
+                        <option value="Marketing">Pazarlama</option>
+                        <option value="Technical Degree">Teknik Derece</option>
+                        <option value="Human Resources">İnsan Kaynakları</option>
+                        <option value="Other">Diğer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="environmentSatisfaction">Çevre Memnuniyeti:</label>
+                    <select class="form-control" id="environmentSatisfaction" required>
+                        <option value="1">Düşük</option>
+                        <option value="2">Orta</option>
+                        <option value="3">Yüksek</option>
+                        <option value="4">Çok Yüksek</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Cinsiyeti:</label>
+                    <select class="form-control" id="gender" required>
+                        <option value="Female">Kadın</option>
+                        <option value="Male">Erkek</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobInvolvement">İşe Katılımı:</label>
+                    <select class="form-control" id="jobInvolvement" required>
+                        <option value="1">Düşük</option>
+                        <option value="2">Orta</option>
+                        <option value="3">Yüksek</option>
+                        <option value="4">Çok Yüksek</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="jobLevel">Kıdem Seviyesi:</label>
+                    <select class="form-control" id="jobLevel" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="JobRole">İş Rolü:</label>
+                    <select class="form-control" id="jobRole" required>
+                        <option value="Sales Executive">Sales Executive</option>
+                        <option value="Research Scientist">Research Scientist</option>
+                        <option value="Laboratory Technician">Laboratory Technician</option>
+                        <option value="Manufacturing Director">Manufacturing Director</option>
+                        <option value="Healthcare Representative">Healthcare Representative</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Sales Representative">Sales Representative</option>
+                        <option value="Research Director">Research Director</option>
                         <option value="Human Resources">Human Resources</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="distanceFromHome">Distance From Home:</label>
-                    <input type="number" class="form-control" id="distanceFromHome" placeholder="Enter Distance From Home" required>
-                </div>
-                <div class="form-group">
-                    <label for="education">Education:</label>
-                    <select class="form-control" id="education" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                                       <label for="educationField">Education Field:</label>
-                    <select class="form-control" id="educationField" required>
-                        <option value="1">Life Sciences</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="environmentSatisfaction">Environment Satisfaction:</label>
-                    <select class="form-control" id="environmentSatisfaction" required>
-                        <option value="1">Low</option>
-                        <option value="2">Medium</option>
-                        <option value="3">High</option>
-                        <option value="4">Very High</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="gender">Gender:</label>
-                    <select class="form-control" id="gender" required>
-                        <option value="Female">Female</option>
-                        <option value="Male">Male</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="jobInvolvement">Job Involvement:</label>
-                    <select class="form-control" id="jobInvolvement" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">High</option>
-                        <option value="4">Very High</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="jobLevel">Job Level:</label>
-                    <input type="number" class="form-control" id="jobLevel" placeholder="Enter Job Level" required>
-                </div>
-                <div class="form-group">
-                    <label for="jobRole">Job Role:</label>
-                    <input type="text" class="form-control" id="jobRole" placeholder="Enter Job Role" required>
-                </div>
-                <div class="form-group">
-                    <label for="jobSatisfaction">Job Satisfaction:</label>
+                    <label for="jobSatisfaction">İş Memnuniyeti:</label>
                     <select class="form-control" id="jobSatisfaction" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        <option value="1">Düşük</option>
+                        <option value="2">Orta</option>
+                        <option value="3">Yüksek</option>
+                        <option value="4">Çok Yüksek</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="maritalStatus">Marital Status:</label>
+                    <label for="maritalStatus">Medeni Hali:</label>
                     <select class="form-control" id="maritalStatus" required>
-                        <option value="Divorced">Divorced</option>
-                        <option value="Married">Married</option>
-                        <option value="Single">Single</option>
+                        <option value="Divorced">Boşanmış</option>
+                        <option value="Married">Evli</option>
+                        <option value="Single">Bekar</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="monthlyIncome">Monthly Income:</label>
+                    <label for="monthlyIncome">Aylık Geliri:</label>
                     <input type="number" class="form-control" id="monthlyIncome" placeholder="Enter Monthly Income" required>
                 </div>
                 <div class="form-group">
-                    <label for="overTime">Over Time:</label>
+                    <label for="overTime">Mesai Durumu:</label>
                     <select class="form-control" id="overTime" required>
-                        <option value="No">No</option>
-                        <option value="Yes">Yes</option>
+                        <option value="No">Yok</option>
+                        <option value="Yes">Var</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="relationshipSatisfaction">Relationship Satisfaction:</label>
+                    <label for="relationshipSatisfaction">İlişki Memnuniyeti:</label>
                     <select class="form-control" id="relationshipSatisfaction" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        <option value="1">Düşük</option>
+                        <option value="2">Orta</option>
+                        <option value="3">Yüksek</option>
+                        <option value="4">Çok Yüksek</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="stockOptionLevel">Stock Option Level:</label>
-                    <input type="number" class="form-control" id="stockOptionLevel" placeholder="Enter Stock Option Level" required>
+                    <label for="stockOptionLevel">Hisse Senedi Durumu:</label>
+                    <select class="form-control" id="stockOptionLevel" required>
+                        <option value="0">Yok</option>
+                        <option value="1">Düşük Yüzdeli Var</option>
+                        <option value="2">Orta Yüzdeli Var</option>
+                        <option value="3">Yüksek Yüzdeli Var</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="totalWorkingYears">Total Working Years:</label>
+                    <label for="totalWorkingYears">Toplam Meslek Hayatı Kaç Yıl:</label>
                     <input type="number" class="form-control" id="totalWorkingYears" placeholder="Enter Total Working Years" required>
                 </div>
-                <div class="form-group">
-                    <label for="trainingTimesLastYear">Training Times Last Year:</label>
+                <div class="form-group">Geçen Yıl Aldığı Eğitim Sayısı:</label>
                     <input type="number" class="form-control" id="trainingTimesLastYear" placeholder="Enter Training Times Last Year" required>
                 </div>
                 <div class="form-group">
-                    <label for="workLifeBalance">Work Life Balance:</label>
+                    <label for="workLifeBalance">İş-Sosyal Hayat Dengesi:</label>
                     <select class="form-control" id="workLifeBalance" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        <option value="1">Kötü</option>
+                        <option value="2">Orta</option>
+                        <option value="3">İyi</option>
+                        <option value="4">Çok İyi</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="yearsAtCompany">Years At Company:</label>
+                    <label for="yearsAtCompany">Şirkette Kaç Senedir Çalışıyor:</label>
                     <input type="number" class="form-control" id="yearsAtCompany" placeholder="Enter Years At Company" required>
                 </div>
                 <div class="form-group">
-                    <label for="yearsInCurrentRole">Years In Current Role:</label>
+                    <label for="yearsInCurrentRole">Mevcut Roldeki İş Yılı:</label>
                     <input type="number" class="form-control" id="yearsInCurrentRole" placeholder="Enter Years In Current Role" required>
                 </div>
                 <div class="form-group">
-                    <label for="yearsSinceLastPromotion">Years Since Last Promotion:</label>
+                    <label for="yearsSinceLastPromotion">Son Terfiden Bu Yana Geçen Yıl:</label>
                     <input type="number" class="form-control" id="yearsSinceLastPromotion" placeholder="Enter Years Since Last Promotion" required>
                 </div>
                 <div class="form-group">
-                    <label for="yearsWithCurrManager">Years With Current Manager:</label>
+                    <label for="yearsWithCurrManager">Mevcut Yönetici İle Geçen Yıl:</label>
                     <input type="number" class="form-control" id="yearsWithCurrManager" placeholder="Enter Years With Current Manager" required>
                 </div>
 
-                <button type="button" class="btn btn-primary" onclick="predict()">Predict</button>
+                <button type="button" class="btn btn-primary" onclick="predict()">Sonuç</button>
             </form>
         </div>
         <div class="col-md-6">
-            <h2>Prediction Results</h2>
+            <h2>Tahmin Sonuçları</h2>
             <div id="predictionResult"></div>
         </div>
     </div>
@@ -189,7 +210,7 @@
         var environmentSatisfaction = parseInt($('#environmentSatisfaction').val());
         var gender = $('#gender').val();
         var jobInvolvement = parseInt($('#jobInvolvement').val());
-        var jobLevel = $('#jobLevel').val();
+        var jobLevel = parseInt($('#jobLevel').val());
         var jobRole = $('#jobRole').val();
         var jobSatisfaction = parseInt($('#jobSatisfaction').val());
         var maritalStatus = $('#maritalStatus').val();
@@ -237,8 +258,8 @@
                 'YearsWithCurrManager': yearsWithCurrManager
             }),
             success: function(response) {
-                $('#predictionResult').html('<p><strong>Attrition Prediction:</strong> ' + response.attrition_prediction + '</p>' +
-                                           '<p><strong>Performance Rating Prediction:</strong> ' + response.performance_prediction + '</p>');
+                $('#predictionResult').html('<p><strong>Çalışanın Yıpranma Tahmini:</strong> ' + response.attrition_prediction + '</p>' +
+                                           '<p><strong>Çalışanın Performans Skoru(0-5):</strong> ' + response.performance_prediction + '</p>');
             },
             error: function(xhr, status, error) {
                 alert("Error occurred while predicting: " + error);
