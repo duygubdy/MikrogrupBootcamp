@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attrition & Performance Rating Predictor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Attrition & Performance Rating Predictor</h2>
+            <form id="predictionForm">
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" class="form-control" id="age" placeholder="Enter Age" required>
+                </div>
+                <div class="form-group">
+                    <label for="businessTravel">Business Travel:</label>
+                    <select class="form-control" id="businessTravel" required>
+                        <option value="Travel_Rarely">Travel_Rarely</option>
+                        <option value="Travel_Frequently">Travel_Frequently</option>
+                        <option value="Non-Travel">Non-Travel</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <select class="form-control" id="department" required>
+                        <option value="Sales">Sales</option>
+                        <option value="Research & Development">Research & Development</option>
+                        <option value="Human Resources">Human Resources</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="distanceFromHome">Distance From Home:</label>
+                    <input type="number" class="form-control" id="distanceFromHome" placeholder="Enter Distance From Home" required>
+                </div>
+                <div class="form-group">
+                    <label for="education">Education:</label>
+                    <select class="form-control" id="education" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                                       <label for="educationField">Education Field:</label>
+                    <select class="form-control" id="educationField" required>
+                        <option value="1">Life Sciences</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="environmentSatisfaction">Environment Satisfaction:</label>
+                    <select class="form-control" id="environmentSatisfaction" required>
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                        <option value="4">Very High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select class="form-control" id="gender" required>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobInvolvement">Job Involvement:</label>
+                    <select class="form-control" id="jobInvolvement" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">High</option>
+                        <option value="4">Very High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobLevel">Job Level:</label>
+                    <input type="number" class="form-control" id="jobLevel" placeholder="Enter Job Level" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobRole">Job Role:</label>
+                    <input type="text" class="form-control" id="jobRole" placeholder="Enter Job Role" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobSatisfaction">Job Satisfaction:</label>
+                    <select class="form-control" id="jobSatisfaction" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="maritalStatus">Marital Status:</label>
+                    <select class="form-control" id="maritalStatus" required>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Married">Married</option>
+                        <option value="Single">Single</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="monthlyIncome">Monthly Income:</label>
+                    <input type="number" class="form-control" id="monthlyIncome" placeholder="Enter Monthly Income" required>
+                </div>
+                <div class="form-group">
+                    <label for="overTime">Over Time:</label>
+                    <select class="form-control" id="overTime" required>
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="relationshipSatisfaction">Relationship Satisfaction:</label>
+                    <select class="form-control" id="relationshipSatisfaction" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="stockOptionLevel">Stock Option Level:</label>
+                    <input type="number" class="form-control" id="stockOptionLevel" placeholder="Enter Stock Option Level" required>
+                </div>
+                <div class="form-group">
+                    <label for="totalWorkingYears">Total Working Years:</label>
+                    <input type="number" class="form-control" id="totalWorkingYears" placeholder="Enter Total Working Years" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainingTimesLastYear">Training Times Last Year:</label>
+                    <input type="number" class="form-control" id="trainingTimesLastYear" placeholder="Enter Training Times Last Year" required>
+                </div>
+                <div class="form-group">
+                    <label for="workLifeBalance">Work Life Balance:</label>
+                    <select class="form-control" id="workLifeBalance" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="yearsAtCompany">Years At Company:</label>
+                    <input type="number" class="form-control" id="yearsAtCompany" placeholder="Enter Years At Company" required>
+                </div>
+                <div class="form-group">
+                    <label for="yearsInCurrentRole">Years In Current Role:</label>
+                    <input type="number" class="form-control" id="yearsInCurrentRole" placeholder="Enter Years In Current Role" required>
+                </div>
+                <div class="form-group">
+                    <label for="yearsSinceLastPromotion">Years Since Last Promotion:</label>
+                    <input type="number" class="form-control" id="yearsSinceLastPromotion" placeholder="Enter Years Since Last Promotion" required>
+                </div>
+                <div class="form-group">
+                    <label for="yearsWithCurrManager">Years With Current Manager:</label>
+                    <input type="number" class="form-control" id="yearsWithCurrManager" placeholder="Enter Years With Current Manager" required>
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="predict()">Predict</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2>Prediction Results</h2>
+            <div id="predictionResult"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function predict() {
+        var age =parseInt($('#age').val());
+        var businessTravel = $('#businessTravel').val();
+        var department = $('#department').val();
+        var distanceFromHome =parseInt($('#distanceFromHome').val());
+        var education = parseInt($('#education').val());
+        var educationField = $('#educationField').val();
+        var environmentSatisfaction = parseInt($('#environmentSatisfaction').val());
+        var gender = $('#gender').val();
+        var jobInvolvement = parseInt($('#jobInvolvement').val());
+        var jobLevel = $('#jobLevel').val();
+        var jobRole = $('#jobRole').val();
+        var jobSatisfaction = parseInt($('#jobSatisfaction').val());
+        var maritalStatus = $('#maritalStatus').val();
+        var monthlyIncome = parseInt($('#monthlyIncome').val());
+        var overTime = $('#overTime').val();
+        var relationshipSatisfaction = parseInt($('#relationshipSatisfaction').val());
+        var stockOptionLevel = parseInt($('#stockOptionLevel').val());
+        var totalWorkingYears = parseInt($('#totalWorkingYears').val());
+        var trainingTimesLastYear = parseInt($('#trainingTimesLastYear').val());
+        var workLifeBalance = parseInt($('#workLifeBalance').val());
+        var yearsAtCompany = parseInt($('#yearsAtCompany').val());
+        var yearsInCurrentRole = parseInt($('#yearsInCurrentRole').val());
+        var yearsSinceLastPromotion = parseInt($('#yearsSinceLastPromotion').val());
+        var yearsWithCurrManager = parseInt($('#yearsWithCurrManager').val());
+
+
+        $.ajax({
+            url: "/predict",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                'Age': age,
+                'BusinessTravel': businessTravel,
+                'Department': department,
+                'DistanceFromHome': distanceFromHome,
+                'Education': education,
+                'EducationField': educationField,
+                'EnvironmentSatisfaction': environmentSatisfaction,
+                'Gender': gender,
+                'JobInvolvement': jobInvolvement,
+                'JobLevel': jobLevel,
+                'JobRole': jobRole,
+                'JobSatisfaction': jobSatisfaction,
+                'MaritalStatus': maritalStatus,
+                'MonthlyIncome': monthlyIncome,
+                'OverTime': overTime,
+                'RelationshipSatisfaction': relationshipSatisfaction,
+                'StockOptionLevel': stockOptionLevel,
+                'TotalWorkingYears': totalWorkingYears,
+                'TrainingTimesLastYear': trainingTimesLastYear,
+                'WorkLifeBalance': workLifeBalance,
+                'YearsAtCompany': yearsAtCompany,
+                'YearsInCurrentRole': yearsInCurrentRole,
+                'YearsSinceLastPromotion': yearsSinceLastPromotion,
+                'YearsWithCurrManager': yearsWithCurrManager
+            }),
+            success: function(response) {
+                $('#predictionResult').html('<p><strong>Attrition Prediction:</strong> ' + response.attrition_prediction + '</p>' +
+                                           '<p><strong>Performance Rating Prediction:</strong> ' + response.performance_prediction + '</p>');
+            },
+            error: function(xhr, status, error) {
+                alert("Error occurred while predicting: " + error);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

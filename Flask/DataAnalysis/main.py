@@ -1,12 +1,19 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, jsonify
 import pandas as pd
-import matplotlib.pyplot as plt
 import os
 import plotly.graph_objects as go
 import numpy as np
-from werkzeug.datastructures import FileStorage
+from model import AttritionPerformancePredictor
 
 app = Flask(__name__)
+
+predictor = AttritionPerformancePredictor('logistic_model_attrition.pkl', 'logistic_model_performance.pkl',
+                                          'label_encoders_attrition.pkl')
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+    attrition_prediction, performance_prediction = predictor.predict(data)
+    return jsonify({'attrition_prediction': attrition_prediction.tolist(), 'performance_prediction': performance_prediction.tolist()})
 
 UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
@@ -57,6 +64,9 @@ def create_histograms_and_violin_plots(data, num_columns):
 def index():
     return render_template('index.html')
 
+@app.route('/model')
+def show_model():
+    return render_template('model.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
