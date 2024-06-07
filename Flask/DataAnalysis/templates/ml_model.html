@@ -277,7 +277,7 @@ h2 {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                            <button type="button" class="btn btn-primary" onclick="giveAlert()">Kullanıcı Ekle</button>
+                            <button type="button" class="btn btn-primary" onclick="giveUserAddAlert()">Kullanıcı Ekle</button>
                         </div>
                     </div>
                 </div>
@@ -506,8 +506,11 @@ h2 {
         resetForm();
         $('#exampleModal').modal('hide');
     }
-    function giveAlert() {
-        var requiredFields = [$('#name'), $('#surname'),$('#distanceFromHome'),$('#totalWorkingYears'),$('#totalWorkingYears')];
+    function giveUserAddAlert() {
+        var requiredFields = [$('#name'), $('#surname'),$('#distanceFromHome'),$('#totalWorkingYears'),$('#totalWorkingYears'),
+        $('#trainingTimesLastYear'),$('#trainingTimesLastYear'),$('#yearsAtCompany'),$('#yearsInCurrentRole'),
+            $('#yearsSinceLastPromotion'),$('#yearsWithCurrManager')
+        ];
         var filled = true;
 
         for (var i = 0; i < requiredFields.length; i++) {
@@ -518,10 +521,10 @@ h2 {
         }
 
         if (filled) {
-            toastr.success('Form submitted successfully', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
+            toastr.success('Çalışan Başarıyla Eklendi.', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
             addUser();
         } else {
-            toastr.error('Form submission failed.It is an invalid form!', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
+            toastr.error('Çalışan Eklenemedi. Tüm Alanları Doldurduğunuzdan Emin Olun!', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
         }
     }
 
