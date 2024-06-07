@@ -1,4 +1,7 @@
-from flask import Flask, request, render_template, redirect, url_for, jsonify
+import subprocess
+import webbrowser
+
+from flask import Flask, request, render_template, redirect, url_for, jsonify, send_file
 import pandas as pd
 import os
 import plotly.graph_objects as go
@@ -63,7 +66,7 @@ def create_histograms_and_violin_plots(data, num_columns):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return send_file('index.html')
 
 @app.route('/model')
 def show_model():
@@ -197,4 +200,4 @@ def analyze(filepath):
                            cat_analysis=cat_analysis, data=data)
 
 if __name__ == '__main__':
-        app.run(debug=True);
+    app.run(debug=True)

@@ -8,12 +8,133 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+body {
+    background-image: url('static/bg.png');
+     background-size: cover !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(60, 59, 59);
+    max-width: 1000px;
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.card.selected {
+    background-color: #d3e5ff;
+    border: 2px solid #3a8dff;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.modal-header .close {
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #0a0371;
+    border: none;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.form-control {
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #8480f0;
+    background-color: transparent
+}
+
+.form-control:focus {
+    border-color: #8480f0;
+    box-shadow: 0 0 0 0.2rem rgba(132, 128, 240, 0.25);
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    max-height: 120px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.card-body p {
+    margin-bottom: 10px;
+}
+.card button {
+    margin-top: 20px;
+}
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+#predictionForm .form-group {
+    width: 47%;
+    margin-right: 3%;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+#predictionForm .form-group:nth-child(even) {
+    margin-right: 0;
+}
+.col-md-6:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+    </style>
 </head>
 <body>
-
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div id="card-container"></div>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     data-whatever="@mdo">Yeni Kullanıcı Ekle
@@ -33,15 +154,15 @@
                             <form id="addUserForm">
                                 <div class="form-group">
                                     <label for="name">Ad:</label>
-                                    <input class="form-control" id="name" placeholder="Enter Name" required>
+                                    <input class="form-control" id="name" placeholder="Adını Girin" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="surname">Soyad:</label>
-                                    <input class="form-control" id="surname" placeholder="Enter Surname" required>
+                                    <input class="form-control" id="surname" placeholder="Soyadını Girin" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="age">Yaş:</label>
-                                    <input class="form-control" id="age" placeholder="Enter Age" required>
+                                    <input class="form-control" id="age" placeholder="Yaşını Girin" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="department">Departmanı:</label>
@@ -119,7 +240,7 @@
                                 <div class="form-group">
                                     <label for="monthlyIncome">Aylık Geliri:</label>
                                     <input type="number" class="form-control" id="monthlyIncome"
-                                           placeholder="Enter Monthly Income" required>
+                                           placeholder="Aylık Geliri Dolar Bazında Girin" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="stockOptionLevel">Hisse Senedi Durumu:</label>
@@ -133,31 +254,31 @@
                                 <div class="form-group">
                                     <label for="totalWorkingYears">Toplam Meslek Hayatı Kaç Yıl:</label>
                                     <input type="number" class="form-control" id="totalWorkingYears"
-                                           placeholder="Enter Total Working Years" required>
+                                           placeholder="Toplam Meslek Hayatı Kaç Yıl" required>
                                 </div>
                                 <div class="form-group">Geçen Yıl Aldığı Eğitim Sayısı:</label>
                                     <input type="number" class="form-control" id="trainingTimesLastYear"
-                                           placeholder="Enter Training Times Last Year" required>
+                                           placeholder="Geçen Yıl Aldığı Eğitim Sayısı" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="yearsAtCompany">Şirkette Kaç Senedir Çalışıyor:</label>
                                     <input type="number" class="form-control" id="yearsAtCompany"
-                                           placeholder="Enter Years At Company" required>
+                                           placeholder="Şirkette Kaç Senedir Çalışıyor" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="yearsInCurrentRole">Mevcut Roldeki İş Yılı:</label>
                                     <input type="number" class="form-control" id="yearsInCurrentRole"
-                                           placeholder="Enter Years In Current Role" required>
+                                           placeholder="Mevcut Roldeki İş Yılı" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="yearsSinceLastPromotion">Son Terfiden Bu Yana Geçen Yıl:</label>
                                     <input type="number" class="form-control" id="yearsSinceLastPromotion"
-                                           placeholder="Enter Years Since Last Promotion" required>
+                                           placeholder="Son Terfiden Bu Yana Geçen Yıl" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="yearsWithCurrManager">Mevcut Yönetici İle Geçen Yıl:</label>
                                     <input type="number" class="form-control" id="yearsWithCurrManager"
-                                           placeholder="Enter Years With Current Manager" required>
+                                           placeholder="Mevcut Yönetici İle Geçen Yıl" required>
                                 </div>
                             </form>
                         </div>
@@ -169,8 +290,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <h2>Attrition & Performance Rating Predictor</h2>
+        <div class="col-md-6">
+            <h2>Çalışan Bilgilerini Girin</h2>
             <form id="predictionForm">
                 <div class="form-group">
                     <label for="businessTravel">İş Seyahati Sıklığı:</label>
@@ -236,10 +357,6 @@
                 </div>
                 <button type="button" id="addUserButton" class="btn btn-primary" onclick="predict()">Sonuç</button>
             </form>
-        </div>
-        <div class="col-md-4">
-            <h2>Tahmin Sonuçları</h2>
-            <div id="predictionResult"></div>
         </div>
     </div>
 </div>
@@ -340,14 +457,14 @@
             const cardBody = document.createElement('div');
             cardBody.className = 'card-body';
             cardBody.innerHTML = `
-                <p>${user.name} ${user.surname}</p>
+                <p><strong>${user.name} ${user.surname}<strong></p>
                 <p></p>
             `;
             console.log(user.response)
             if (user.response !== undefined && user.response != null) {
                 cardBody.innerHTML += `
-                <p><strong>Çalışanın Yıpranma Tahmini:<strong> ${user.response.attrition_prediction}</p>
-                <p> <strong>Çalışanın Performans Skoru(0-5):<strong> ${user.response.performance_prediction}</p>
+                <p>Çalışanın Yıpranma: ${user.response.attrition_prediction}</p>
+                <p>Çalışanın Performans Skoru(0-5): ${user.response.performance_prediction}</p>
             `;
             }
             card.appendChild(cardBody);
