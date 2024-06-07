@@ -8,6 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="static/assets/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="static/assets/toastr/toastr.css">
     <style>
 body {
     background-image: url('static/bg.png');
@@ -275,7 +277,7 @@ h2 {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                            <button type="button" class="btn btn-primary" onclick="addUser()">Kullanıcı Ekle</button>
+                            <button type="button" class="btn btn-primary" onclick="giveAlert()">Kullanıcı Ekle</button>
                         </div>
                     </div>
                 </div>
@@ -408,7 +410,7 @@ h2 {
                 'YearsWithCurrManager': yearsWithCurrManager
             }),
             success: function (response) {
-                $('#predictionResult').html('<p><strong>Çalışanın Yıpranma Tahmini:</strong> ' + response.attrition_prediction + '</p>' +
+                $('#predictionResult').html('<p><strong>Çalışanın Yıpranma Tahmini:</strong> ' + response.attrition_prediction=='Yes'? Evet : 'Hayır' + '</p>' +
                     '<p><strong>Çalışanın Performans Skoru(0-5):</strong> ' + response.performance_prediction + '</p>');
 
                 const selectedUser = JSON.parse(localStorage.getItem('selectedUser')) || {}
@@ -495,6 +497,7 @@ h2 {
             yearsSinceLastPromotion: parseInt($('#yearsSinceLastPromotion').val()),
             yearsWithCurrManager: parseInt($('#yearsWithCurrManager').val())
         }
+
         const users = JSON.parse(localStorage.getItem('users')) || []
         users.push(user)
         localStorage.setItem('users', JSON.stringify(users))
@@ -503,6 +506,24 @@ h2 {
         resetForm();
         $('#exampleModal').modal('hide');
     }
+    function giveAlert() {
+        var requiredFields = [$('#name'), $('#surname'),$('#distanceFromHome'),$('#totalWorkingYears'),$('#totalWorkingYears')];
+        var filled = true;
+
+        for (var i = 0; i < requiredFields.length; i++) {
+            if (requiredFields[i].val() === '') {
+            filled = false;
+            break;
+            }
+        }
+
+        if (filled) {
+            toastr.success('Form submitted successfully', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
+            addUser();
+        } else {
+            toastr.error('Form submission failed.It is an invalid form!', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
+        }
+    }
 
     const resetForm = () => {
         $('#addUserForm')[0].reset();
@@ -510,12 +531,6 @@ h2 {
     }
 </script>
 
-<style>
-    .card.selected {
-        background-color: #d3e5ff;
-        border: 2px solid #3a8dff;
-    }
-</style>
 
 </body>
 </html>
