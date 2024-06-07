@@ -10,7 +10,19 @@ figure, header, nav, section, article, aside, footer, figcaption {
   border: 0;
   outline: 0;
 }
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+}
+
+#fullscreen-video {
+  width: 120% !important;
+  max-width: 600px;
+  height: auto;
+  margin-left: -100px;
+}
 .grid:after {
   content: '';
   display: block;
