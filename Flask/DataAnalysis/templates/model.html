@@ -501,10 +501,12 @@ h2 {
         loadUsers();
         count++;
         resetForm();
+        $('#exampleModal').modal('hide');
     }
 
     const resetForm = () => {
         $('#addUserForm')[0].reset();
+        $('.modal-body').scrollTop(0);
     }
 </script>
 
