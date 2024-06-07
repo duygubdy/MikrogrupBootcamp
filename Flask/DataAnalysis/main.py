@@ -70,7 +70,7 @@ def index():
 
 @app.route('/model')
 def show_model():
-    return render_template('model.html')
+    return render_template('ml_model.html')
 
 @app.route('/csv')
 def show_csv():
