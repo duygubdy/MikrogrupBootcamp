@@ -166,7 +166,17 @@ body {
   border-radius: 23px;
   letter-spacing: 0.25px;
 }
-
+form .main-blue-button button {
+  display: inline-block;
+  background-color: #5d00f3;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 12px 25px;
+  border-radius: 23px;
+  letter-spacing: 0.25px;
+}
 .main-red-button a {
   display: inline-block;
   background-color: #fe3f40;

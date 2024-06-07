@@ -66,15 +66,18 @@ def create_histograms_and_violin_plots(data, num_columns):
 
 @app.route('/')
 def index():
-    return send_file('index.html')
+    return render_template('index.html')
 
 @app.route('/model')
 def show_model():
     return render_template('model.html')
 
+@app.route('/csv')
+def show_csv():
+    return render_template('csv.html')
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
-
     if request.form["att"]=="Upload":
         if 'file' not in request.files:
             return redirect(request.url)

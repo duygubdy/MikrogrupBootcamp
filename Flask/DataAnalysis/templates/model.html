@@ -160,9 +160,10 @@ h2 {
                                     <label for="surname">Soyad:</label>
                                     <input class="form-control" id="surname" placeholder="Soyadını Girin" required>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="age">Yaş:</label>
-                                    <input class="form-control" id="age" placeholder="Yaşını Girin" required>
+                                    <label for="distanceFromHome">Evden Uzaklığı:</label>
+                                    <input type="number" class="form-control" id="distanceFromHome" placeholder="Km cinsinden yazın" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="department">Departmanı:</label>
@@ -171,11 +172,6 @@ h2 {
                                         <option value="Research & Development">Araştırma Geliştirme</option>
                                         <option value="Human Resources">İnsan Kaynakları</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="distanceFromHome">Evden Uzaklığı:</label>
-                                    <input type="number" class="form-control" id="distanceFromHome"
-                                           placeholder="Km cinsinden yazın" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="education">Eğitim Seviyesi:</label>
@@ -238,11 +234,6 @@ h2 {
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="monthlyIncome">Aylık Geliri:</label>
-                                    <input type="number" class="form-control" id="monthlyIncome"
-                                           placeholder="Aylık Geliri Dolar Bazında Girin" required>
-                                </div>
-                                <div class="form-group">
                                     <label for="stockOptionLevel">Hisse Senedi Durumu:</label>
                                     <select class="form-control" id="stockOptionLevel" required>
                                         <option value="0">Yok</option>
@@ -293,6 +284,14 @@ h2 {
         <div class="col-md-6">
             <h2>Çalışan Bilgilerini Girin</h2>
             <form id="predictionForm">
+                 <div class="form-group">
+                    <label for="age">Yaş:</label>
+                     <input class="form-control" id="age" placeholder="Yaşını Girin" required>
+                 </div>
+                <div class="form-group">
+                    <label for="monthlyIncome">Aylık Geliri:</label>
+                    <input type="number" class="form-control" id="monthlyIncome" placeholder="Aylık Geliri Dolar Bazında Girin" required>
+                </div>
                 <div class="form-group">
                     <label for="businessTravel">İş Seyahati Sıklığı:</label>
                     <select class="form-control" id="businessTravel" required>
@@ -320,15 +319,7 @@ h2 {
                         <option value="4">Çok Yüksek</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="jobSatisfaction">İş Memnuniyeti:</label>
-                    <select class="form-control" id="jobSatisfaction" required>
-                        <option value="1">Düşük</option>
-                        <option value="2">Orta</option>
-                        <option value="3">Yüksek</option>
-                        <option value="4">Çok Yüksek</option>
-                    </select>
-                </div>
+
                 <div class="form-group">
                     <label for="overTime">Mesai Durumu:</label>
                     <select class="form-control" id="overTime" required>
@@ -363,10 +354,10 @@ h2 {
 
 <script>
     function predict() {
-        var age = JSON.parse(localStorage.getItem('selectedUser')).age;
+        var age = parseInt($('#age').val());
         var businessTravel = $('#businessTravel').val();
         var department = JSON.parse(localStorage.getItem('selectedUser')).department;
-        var distanceFromHome = JSON.parse(localStorage.getItem('selectedUser')).distanceFromHome;
+        var distanceFromHome =JSON.parse(localStorage.getItem('selectedUser')).distanceFromHome;
         var education = JSON.parse(localStorage.getItem('selectedUser')).education;
         var educationField = JSON.parse(localStorage.getItem('selectedUser')).educationField;
         var environmentSatisfaction = parseInt($('#environmentSatisfaction').val());
@@ -374,9 +365,8 @@ h2 {
         var jobInvolvement = parseInt($('#jobInvolvement').val());
         var jobLevel = JSON.parse(localStorage.getItem('selectedUser')).jobLevel;
         var jobRole = JSON.parse(localStorage.getItem('selectedUser')).jobRole;
-        var jobSatisfaction = parseInt($('#jobSatisfaction').val());
         var maritalStatus = JSON.parse(localStorage.getItem('selectedUser')).maritalStatus;
-        var monthlyIncome = JSON.parse(localStorage.getItem('selectedUser')).monthlyIncome;
+        var monthlyIncome = parseInt($('#monthlyIncome').val());
         var overTime = $('#overTime').val();
         var relationshipSatisfaction = parseInt($('#relationshipSatisfaction').val());
         var stockOptionLevel = JSON.parse(localStorage.getItem('selectedUser')).stockOptionLevel;
@@ -404,7 +394,6 @@ h2 {
                 'JobInvolvement': jobInvolvement,
                 'JobLevel': jobLevel,
                 'JobRole': jobRole,
-                'JobSatisfaction': jobSatisfaction,
                 'MaritalStatus': maritalStatus,
                 'MonthlyIncome': monthlyIncome,
                 'OverTime': overTime,
@@ -464,7 +453,7 @@ h2 {
             if (user.response !== undefined && user.response != null) {
                 cardBody.innerHTML += `
                 <p>Çalışanın Yıpranma: ${user.response.attrition_prediction}</p>
-                <p>Çalışanın Performans Skoru(0-5): ${user.response.performance_prediction}</p>
+                <p>Çalışanın Memnuniyeti(1-5): ${user.response.performance_prediction}</p>
             `;
             }
             card.appendChild(cardBody);
@@ -489,7 +478,6 @@ h2 {
             id: count,
             name: $('#name').val(),
             surname: $('#surname').val(),
-            age: parseInt($('#age').val()),
             businessTravel: $('#businessTravel').val(),
             department: $('#department').val(),
             distanceFromHome: parseInt($('#distanceFromHome').val()),
@@ -499,7 +487,6 @@ h2 {
             jobLevel: parseInt($('#jobLevel').val()),
             jobRole: $('#jobRole').val(),
             maritalStatus: $('#maritalStatus').val(),
-            monthlyIncome: parseInt($('#monthlyIncome').val()),
             stockOptionLevel: parseInt($('#stockOptionLevel').val()),
             totalWorkingYears: parseInt($('#totalWorkingYears').val()),
             trainingTimesLastYear: parseInt($('#trainingTimesLastYear').val()),

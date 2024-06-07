@@ -7,7 +7,7 @@ import joblib
 data = pd.read_csv("data/data.csv")
 features = ['Age', 'BusinessTravel', 'Department', 'DistanceFromHome',
             'Education', 'EducationField', 'EnvironmentSatisfaction', 'Gender',
-            'JobInvolvement', 'JobLevel', 'JobRole', 'JobSatisfaction',
+            'JobInvolvement', 'JobLevel', 'JobRole',
             'MaritalStatus', 'MonthlyIncome',
             'OverTime', 'RelationshipSatisfaction',
             'StockOptionLevel', 'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance',
@@ -15,7 +15,7 @@ features = ['Age', 'BusinessTravel', 'Department', 'DistanceFromHome',
 
 X = data[features].copy()
 y_attrition = data['Attrition']
-y_performance = data['PerformanceRating']
+y_performance = data['JobSatisfaction']
 
 categorical_cols = X.select_dtypes(include=['object']).columns.tolist()
 label_encoders = {}
