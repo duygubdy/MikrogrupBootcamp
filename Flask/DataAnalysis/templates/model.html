@@ -500,6 +500,11 @@ h2 {
         localStorage.setItem('users', JSON.stringify(users))
         loadUsers();
         count++;
+        resetForm();
+    }
+
+    const resetForm = () => {
+        $('#addUserForm')[0].reset();
     }
 </script>
 
