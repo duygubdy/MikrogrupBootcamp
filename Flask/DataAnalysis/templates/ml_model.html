@@ -453,9 +453,13 @@ h2 {
             `;
             console.log(user.response)
             if (user.response !== undefined && user.response != null) {
+                let attritionResult = user.response.attrition_prediction == 'Yes' ? 'Evet' : 'Hayır';
+                let performanceResult= user.response.attrition_prediction == 3 ? 'Düşük' : 'Yüksek';
+                console.log(attritionResult, performanceResult)
+
                 cardBody.innerHTML += `
-                <p>Çalışanın Yıpranma: ${user.response.attrition_prediction}</p>
-                <p>Çalışanın Memnuniyeti(1-5): ${user.response.performance_prediction}</p>
+                <p>Çalışanın Yıpranma Durumu: ${attritionResult}</p>
+                <p>Çalışan Performansı: ${performanceResult}</p>
             `;
             }
             card.appendChild(cardBody);
