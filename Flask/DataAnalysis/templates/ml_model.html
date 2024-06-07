@@ -348,7 +348,7 @@ h2 {
                         <option value="4">Çok İyi</option>
                     </select>
                 </div>
-                <button type="button" id="addUserButton" class="btn btn-primary" onclick="predict()">Sonuç</button>
+                <button type="button" id="addUserButton" class="btn btn-primary" onclick="giveAlertForPredict()">Sonuç</button>
             </form>
         </div>
     </div>
@@ -529,6 +529,24 @@ h2 {
             addUser();
         } else {
             toastr.error('Çalışan Eklenemedi. Tüm Alanları Doldurduğunuzdan Emin Olun!', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
+        }
+    }
+    function giveAlertForPredict() {
+        var requiredFields = [$('#age'), $('#monthlyIncome')];
+        var filled = true;
+
+        for (var i = 0; i < requiredFields.length; i++) {
+            if (requiredFields[i].val() === '') {
+            filled = false;
+            break;
+            }
+        }
+
+        if (filled) {
+            toastr.success('Çalışan Tahmini Eklendi.', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
+            predict();
+        } else {
+            toastr.error('Çalışan Tahmini Eklenemedi. Tüm Alanları Doldurduğunuzdan Emin Olun!', '', { "progressBar": true, "positionClass": "toast-top-center", "timeOut": 3000, "closeButton": true, "showDuration": "300", "hideDuration": "1000"});
         }
     }
 
