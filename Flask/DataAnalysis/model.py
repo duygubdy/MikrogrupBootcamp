@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 import joblib
 from imblearn.over_sampling import ADASYN
@@ -50,22 +51,23 @@ X_test_performance = X_test_performance.reindex(columns=X_train_performance.colu
 
 # Logistic Regression model with regularization
 model_attrition = LogisticRegression(penalty='l2', C=10.0, solver='lbfgs', max_iter=5000, multi_class='auto')
-model_performance = LogisticRegression(penalty='l2', C=1000.0, solver='lbfgs', max_iter=10000, multi_class='multinomial',tol=0.0001)
+model_svm_rbf_performance = SVC(kernel='rbf', C=2.0, gamma='scale', random_state=42)
 # Train the model
 model_attrition.fit(X_train_attrition, y_train_attrition)
-model_performance.fit(X_train_performance, y_train_performance)
+model_svm_rbf_performance.fit(X_train_performance, y_train_performance)
 
 # Predict the target attribute
 y_train_attrition_pred = model_attrition.predict(X_train_attrition)
 y_test_attrition_pred = model_attrition.predict(X_test_attrition)
-y_train_performance_pred = model_performance.predict(X_train_performance)
-y_test_performance_pred = model_performance.predict(X_test_performance)
+y_train_svm_rbf_performance_pred = model_svm_rbf_performance.predict(X_train_performance)
+y_test_svm_rbf_performance_pred = model_svm_rbf_performance.predict(X_test_performance)
 
 
 train_attrition_accuracy = accuracy_score(y_train_attrition, y_train_attrition_pred)
 test_attrition_accuracy = accuracy_score(y_test_attrition, y_test_attrition_pred)
-train_performance_accuracy = accuracy_score(y_train_performance, y_train_performance_pred)
-test_performance_accuracy = accuracy_score(y_test_performance, y_test_performance_pred)
+train_svm_rbf_performance_accuracy = accuracy_score(y_train_performance, y_train_svm_rbf_performance_pred)
+test_svm_rbf_performance_accuracy = accuracy_score(y_test_performance, y_test_svm_rbf_performance_pred)
+
 
 class AttritionPerformancePredictor:
     def __init__(self, model_attrition_path, model_performance_path, encoders_path):
