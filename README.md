@@ -1,5 +1,9 @@
 # HRWELL - Machine Learning Integrated HR Tool
 
+
+https://github.com/duygubdy/MikrogrupBootcamp/assets/101207461/6ba0b690-6a11-4f0d-ba10-0a12f21c13b8
+
+
 ## Proje Amacı
 HRWELL, İnsan Kaynakları süreçlerinde veri analizini ve makine öğrenmesini entegre eden bir araçtır. Bu proje, çalışan verilerini analiz ederek çalışan yıpranmasını ve performansını önceden tahmin etmeyi hedefler. Dinamik veri analizi toolu ile çalışan yıpranma analizine doğrudan erişim sağlar ve yüksek doğruluklu bir model sunar.
 
